@@ -62,7 +62,23 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager extends Employee {
+  constructor(first_name, last_name, email, age, reports){
+    super(first_name, last_name, email, age)
+    this.reports = [];
+  }
+
+  hire(newEmployee) {
+    this.reports.push(newEmployee)
+  }
+  fire(index) {
+    this.reports.splice(index, 1)
+  }
+}
+
+
+let bryce = new Manager("Bryce", "Hull", "gmail.com", 24)
+console.log(bryce)
 
 
 ////////// PROBLEM 3 //////////
@@ -86,7 +102,34 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
+class ProgressiveManager extends Manager {
+  constructor (first_name, last_name, email, age, reports, title, bonus){
+  super (first_name, last_name, email, age, reports)
+    this.title = 'Not a manager';
+    this.bonus = 0;
+  }
+  hire(){
+    super.hire()
+    let len = this.reports.length;
+    if (len === 0){
+      this.title = 'Not a manager'
+    } else if (len > 0 && len <= 3){
+      this.title = 'Barely Manager'
+    } else if (len > 3 && len <= 10){
+      this.title = 'Mostly Manager'
+    } else if (len > 10 && len <= 50){
+      this.title = 'Manager'
+    } else if (len > 50 && len <= 100){
+      this.title = 'Manager Plus'
+    } else if (len > 100){
+      this.title = 'Bestest Manager'
+    }
+  }
+  fire(){
+    super.fire
+    this.bonus += 100
+  }
+}
 
 
 
